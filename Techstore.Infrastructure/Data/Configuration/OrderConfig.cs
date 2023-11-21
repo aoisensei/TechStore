@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,10 @@ namespace Techstore.Infrastructure.Data.Configuration
             builder.Property(p => p.order_date).IsRequired(true);
             builder.Property(p => p.total_price).IsRequired(true);
 
-            builder.HasOne(p => p.user_id).
-                WithMany(p => p.ds_order)
-
+            builder.HasOne(p => p.user).
+                WithMany(e => e.ds_order).
+                HasForeignKey(e => e.user_id).
+                OnDelete(DeleteBehavior.NoAction);
         }
     }
 }
