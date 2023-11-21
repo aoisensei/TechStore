@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,10 @@ namespace Techstore.Domain.Entities
 {
     public class Product
     {
+        [Key]
         public string product_id { get; set; } = string.Empty;
+
+        [Required]
         public string product_name { get; set;} = string.Empty;
         public double price { get; set; }
         public string description { get; set;} = string.Empty;
@@ -20,7 +24,7 @@ namespace Techstore.Domain.Entities
         public string category_id { get; set; } = string.Empty;
         public virtual Category? category { get; set; }
 
-        public virtual ICollection<OrderItem>? orderItems { get; set; }
+        public virtual ICollection<OrderItem>? ds_orderItem { get; set; }
 
     }
 }
