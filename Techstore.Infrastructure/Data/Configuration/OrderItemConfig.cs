@@ -9,7 +9,7 @@ using Techstore.Domain.Entities;
 
 namespace Techstore.Infrastructure.Data.Configuration
 {
-    internal class OrderItemConfig
+    internal class OrderItemConfig : IEntityTypeConfiguration<OrderItem>
     {
         public void Configure(EntityTypeBuilder<OrderItem> builder)
         {

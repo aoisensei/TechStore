@@ -18,6 +18,6 @@ namespace Techstore.Domain.Entities
         public string email { get; set; } = string.Empty;
         public string full_name { get; set; } = string.Empty;
 
-        public virtual ICollection<Order> ds_order { get; set;}
+        public virtual ICollection<Order>? ds_order { get; set;}
     }
 }
