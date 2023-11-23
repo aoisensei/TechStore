@@ -14,7 +14,7 @@ public static class ConfigService
 {
     public static IServiceCollection AddTechStoreInfrastructureServices(this IServiceCollection services, string connectionStr)
     {
-        services.AddDbContext<TechStoreDbContext>(builder => builder.UseSqlServer(connectionStr, sql => sql.MigrationsAssembly("Techstore.Api")));
+        services.AddDbContext<TechStoreDbContext>(builder => builder.UseSqlServer(connectionStr, sql => sql.MigrationsAssembly("Techstore.Infrastructure")));
 
         return services;
     }
