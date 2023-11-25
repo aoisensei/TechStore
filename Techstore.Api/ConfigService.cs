@@ -1,4 +1,5 @@
-﻿using Techstore.Infrastructure;
+﻿using Techstore.Application;
+using Techstore.Infrastructure;
 
 namespace Techstore.Api
 {
@@ -8,9 +9,11 @@ namespace Techstore.Api
         {
             var connectionStr = configuration.GetConnectionString("default");
             services.AddTechStoreInfrastructureServices(connectionStr);
+            services.AddTechStoreApplicationServices();
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
+
 
             return services;
         }
