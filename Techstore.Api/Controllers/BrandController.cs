@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Techstore.Application.Brand.Commands;
 using Techstore.Application.Brand.Queries;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Techstore.Api.Controllers
 {
@@ -16,16 +18,48 @@ namespace Techstore.Api.Controllers
             return Ok(brands);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetByIdAsync(string id)
+        [HttpGet("{brand_id}")]
+        public async Task<IActionResult> GetByIdAsync(string brand_id)
         {
-            var brand = await Mediator.Send(new BrandGetByIdQuery() { brand_id = id});
+            var brand = await Mediator.Send(new BrandGetByIdQuery() { brand_id = brand_id });
 
             if (brand == null)
             {
                 return NotFound();
             }
             return Ok(brand);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateAsync(BrandCreateCommand command)
+        {
+            var createBrand = await Mediator.Send(command);
+
+            return Ok(new
+            {
+                createBrand.brand_id,
+                createBrand.brand_name
+            });
+        }
+
+        [HttpPut("{brand_id}")]
+        public async Task<IActionResult> UpdateAsync(string brand_id, BrandUpdateCommand command)
+        {
+            if (!brand_id.Equals(command.brand_id))
+            {
+                return BadRequest("Không tìm thấy bản ghi!!!");
+            }
+
+            await Mediator.Send(command);
+
+            return Ok("Sửa bản ghi thành công!!!");
+        }
+
+        [HttpDelete("{brand_id}")]
+        public async Task<IActionResult> DeleteAsync(string brand_id)
+        {
+            await Mediator.Send(new BrandDeleteCommand { brand_id = brand_id});
+            return Ok("Đã xóa bản ghi!!!");
         }
     }
 }
