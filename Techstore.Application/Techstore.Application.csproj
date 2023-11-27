@@ -24,12 +24,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Category\" />
     <Folder Include="Common\Behavior\" />
-    <Folder Include="User\" />
-    <Folder Include="Product\" />
-    <Folder Include="OrderItem\" />
-    <Folder Include="Order\" />
+    <Folder Include="OrderItem\Commands\" />
+    <Folder Include="OrderItem\Dto\" />
+    <Folder Include="OrderItem\Queries\" />
+    <Folder Include="Order\Commands\" />
+    <Folder Include="Order\Dto\" />
+    <Folder Include="Order\Queries\" />
+    <Folder Include="Product\Commands\" />
+    <Folder Include="Product\Dto\" />
+    <Folder Include="Product\Queries\" />
+    <Folder Include="User\Commands\" />
+    <Folder Include="User\Dto\" />
+    <Folder Include="User\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

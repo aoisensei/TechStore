@@ -58,7 +58,13 @@ namespace Techstore.Api.Controllers
         [HttpDelete("{brand_id}")]
         public async Task<IActionResult> DeleteAsync(string brand_id)
         {
-            await Mediator.Send(new BrandDeleteCommand { brand_id = brand_id});
+            var result = await Mediator.Send(new BrandDeleteCommand { brand_id = brand_id});
+
+            if (result == null)
+            {
+                return BadRequest("Không tìm thấy bản ghi!!!");
+            }
+
             return Ok("Đã xóa bản ghi!!!");
         }
     }

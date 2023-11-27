@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using Techstore.Application.Brand.Dto;
+using Techstore.Application.Category.Dto;
 using Techstore.Application.Interface;
 
 namespace Techstore.Application
@@ -15,6 +16,7 @@ namespace Techstore.Application
                 ctg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
             });
             services.AddScoped<IRepository<Domain.Entities.Brand>, BrandRepo>();
+            services.AddScoped<IRepository<Domain.Entities.Category>, CategoryRepo>();
 
             return services;
         }

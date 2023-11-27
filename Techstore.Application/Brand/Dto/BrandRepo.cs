@@ -34,9 +34,9 @@ namespace Techstore.Application.Brand.Dto
             return result.ToString();
         }
 
-        public Task<List<Domain.Entities.Brand>> GetAllAsync()
+        public async Task<List<Domain.Entities.Brand>> GetAllAsync()
         {
-            return _techStoreDbContext.Brands.ToListAsync();
+            return await _techStoreDbContext.Brands.ToListAsync();
         }
 
         public async Task<Domain.Entities.Brand> GetByIdAsync(string id)
